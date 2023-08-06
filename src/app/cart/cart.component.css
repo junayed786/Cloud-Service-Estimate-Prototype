@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+  }
+
+.empty_cart{
+  height: 70%;
+}
+img {width: 100%}
+
+.add_button{
+  left: 30%;
+}
+
+.title_center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}

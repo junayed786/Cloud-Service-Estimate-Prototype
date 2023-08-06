@@ -1,0 +1,247 @@
+
+<br>
+<!-- for storage service -->
+<ng-container *ngIf="(storage_data_google.length !=0) || (storage_data_aws.length !=0)">
+  <h1 for=" ">Your Estimation for Storage as a service</h1>
+  <ng-container *ngIf="(storage_data_google.length !=0)">
+    <h3 for=" ">Cost Estimation For Google Cloud Provider</h3>
+    <table mat-table [dataSource]="storage_data_google" class="mat-elevation-z8">    
+        <ng-container matColumnDef="memorysize">
+          <th mat-header-cell *matHeaderCellDef> Memory Size </th>
+          <td mat-cell *matCellDef="let element"> {{element.memorysize}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="transfer">
+          <th mat-header-cell *matHeaderCellDef> Transfer </th>
+          <td mat-cell *matCellDef="let element"> {{element.transfer}} </td>
+        </ng-container>    
+        <ng-container matColumnDef="get">
+          <th mat-header-cell *matHeaderCellDef> GET </th>
+          <td mat-cell *matCellDef="let element"> {{element.get}} </td>
+        </ng-container>    
+        <ng-container matColumnDef="put">
+          <th mat-header-cell *matHeaderCellDef> PUT </th>
+          <td mat-cell *matCellDef="let element"> {{element.put}} </td>
+        </ng-container> 
+        <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef> Location </th>
+            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+        </ng-container> 
+        <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef> Duration </th>
+            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="costgoogle">
+          <th mat-header-cell *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.costgoogle}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td  *matCellDef="let element"> 
+            <button (click)="removeService(element.id)"> Remove</button>
+            <button (click)="editServiceStorage(element.id)"> Edit</button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="ColumnsStorageGoogle"></tr>
+        <tr mat-row *matRowDef="let row; columns: ColumnsStorageGoogle;"></tr>
+      </table>
+  </ng-container>
+
+  <ng-container *ngIf="(storage_data_aws.length !=0)">
+    <h3 for=" ">Cost Estimation For AWS Cloud Provider</h3>
+    <table mat-table [dataSource]="storage_data_aws" class="mat-elevation-z8">    
+        <ng-container matColumnDef="memorysize">
+          <th mat-header-cell *matHeaderCellDef> Memory Size </th>
+          <td mat-cell *matCellDef="let element"> {{element.memorysize}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="transfer">
+          <th mat-header-cell *matHeaderCellDef> Transfer </th>
+          <td mat-cell *matCellDef="let element"> {{element.transfer}} </td>
+        </ng-container>    
+        <ng-container matColumnDef="get">
+          <th mat-header-cell *matHeaderCellDef> GET </th>
+          <td mat-cell *matCellDef="let element"> {{element.get}} </td>
+        </ng-container>    
+        <ng-container matColumnDef="put">
+          <th mat-header-cell *matHeaderCellDef> PUT </th>
+          <td mat-cell *matCellDef="let element"> {{element.put}} </td>
+        </ng-container> 
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Location </th>
+          <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+        </ng-container> 
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef> Duration </th>
+          <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="costaws">
+          <th mat-header-cell *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.costaws}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td  *matCellDef="let element"> 
+            <button (click)="removeService(element.id)"> Remove</button>
+            <button (click)="editServiceStorage(element.id)"> Edit</button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="ColumnsStorageAWS"></tr>
+        <tr mat-row *matRowDef="let row; columns: ColumnsStorageAWS;"></tr>
+      </table>
+  </ng-container>
+</ng-container>
+
+<!-- for virtual machine -->
+<br>
+<br>
+<ng-container *ngIf="(vm_data_google.length !=0 ||  vm_data_aws.length !=0)">
+  <h1 for=" ">Your Estimation for Virtual Machine as a service</h1>
+    <ng-container *ngIf="(vm_data_google.length !=0)">
+      <h3 for=" ">Cost Estimation For Google Cloud Provider</h3>
+      <table mat-table [dataSource]="vm_data_google" class="mat-elevation-z8">    
+          <ng-container matColumnDef="ram">
+            <th mat-header-cell *matHeaderCellDef> RAM </th>
+            <td mat-cell *matCellDef="let element"> {{element.ram}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="storage">
+            <th mat-header-cell *matHeaderCellDef> Storage </th>
+            <td mat-cell *matCellDef="let element"> {{element.storage}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="cpucore">
+            <th mat-header-cell *matHeaderCellDef> CPU Core </th>
+            <td mat-cell *matCellDef="let element"> {{element.cpucore}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="os">
+            <th mat-header-cell *matHeaderCellDef> Operating System </th>
+            <td mat-cell *matCellDef="let element"> {{element.os}} </td>
+          </ng-container>
+          <ng-container matColumnDef="noh">
+            <th mat-header-cell *matHeaderCellDef> Number Of Hours </th>
+            <td mat-cell *matCellDef="let element"> {{element.cpucore}} </td>
+          </ng-container>    
+          <ng-container matColumnDef="instance">
+            <th mat-header-cell *matHeaderCellDef> Number Of Instances </th>
+            <td mat-cell *matCellDef="let element"> {{element.instance}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef> Location </th>
+            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+          </ng-container> 
+          <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef> Duration </th>
+            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+          </ng-container> 
+          <ng-container matColumnDef="costgoogle">
+            <th mat-header-cell *matHeaderCellDef> Cost </th>
+            <td mat-cell *matCellDef="let element"> {{element.costgoogle}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td  *matCellDef="let element"> 
+              <button (click)="removeService(element.id)"> Remove</button>
+              <button (click)="editServiceStorage(element.id)"> Edit</button>
+            </td>
+          </ng-container>  
+    
+          <tr mat-header-row *matHeaderRowDef="ColumnsVMGoogle"></tr>
+          <tr mat-row *matRowDef="let row; columns: ColumnsVMGoogle;"></tr>
+        </table>
+    </ng-container>
+
+    <ng-container *ngIf="(vm_data_aws.length !=0)">
+      <h3 for=" ">Cost Estimation For AWS Cloud Provider</h3>
+      <table mat-table [dataSource]="vm_data_aws" class="mat-elevation-z8">    
+          <ng-container matColumnDef="ram">
+            <th mat-header-cell *matHeaderCellDef> RAM </th>
+            <td mat-cell *matCellDef="let element"> {{element.ram}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="storage">
+            <th mat-header-cell *matHeaderCellDef> Storage </th>
+            <td mat-cell *matCellDef="let element"> {{element.storage}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="cpucore">
+            <th mat-header-cell *matHeaderCellDef> CPU Core </th>
+            <td mat-cell *matCellDef="let element"> {{element.cpucore}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="os">
+            <th mat-header-cell *matHeaderCellDef> Operating System </th>
+            <td mat-cell *matCellDef="let element"> {{element.os}} </td>
+          </ng-container>
+          <ng-container matColumnDef="noh">
+            <th mat-header-cell *matHeaderCellDef> Number Of Hours </th>
+            <td mat-cell *matCellDef="let element"> {{element.cpucore}} </td>
+          </ng-container>    
+          <ng-container matColumnDef="instance">
+            <th mat-header-cell *matHeaderCellDef> Number Of Instances </th>
+            <td mat-cell *matCellDef="let element"> {{element.instance}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef> Location </th>
+            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+          </ng-container> 
+          <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef> Duration </th>
+            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+          </ng-container> 
+          <ng-container matColumnDef="costaws">
+            <th mat-header-cell *matHeaderCellDef> Cost </th>
+            <td mat-cell *matCellDef="let element"> {{element.costaws}} </td>
+          </ng-container>   
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td  *matCellDef="let element"> 
+              <button (click)="removeService(element.id)"> Remove</button>
+              <button (click)="editServiceStorage(element.id)"> Edit</button>
+            </td>
+          </ng-container>  
+          
+          <tr mat-header-row *matHeaderRowDef="ColumnsVMAWS"></tr>
+          <tr mat-row *matRowDef="let row; columns: ColumnsVMAWS;"></tr>
+        </table>
+
+    </ng-container>
+</ng-container>
+
+<!-- <ng-container *ngIf="(storage_data_google.length || vm_data_google.length != 0)"> 
+  <h1>Your grand total is {{totalcost}} euro.</h1>
+</ng-container> -->
+<!-- <p style="font-size: 17px;">Your total cost estimation for Google is 70 Euro</p>
+<p style="font-size: 17px;">Your total cost estimation for AWS is 170 Euro</p>
+<p style="font-size: 20px;">Your Grand total cost estimation is 70 Euro</p> -->
+<!-- <button mat-raised-button color="primary" >Add New Service </button> -->
+<div class="empty_cart">
+  <ng-container *ngIf="(storage_data_aws.length ==0 && storage_data_google.length ==0 && vm_data_aws.length ==0 && vm_data_google.length ==0) ">
+    <mat-card class="title_center" >
+      <mat-card-header>
+      <div style="text-align:center;">
+        <mat-card-title >Your Estiamation Cart Is Empty</mat-card-title>
+      </div>
+      </mat-card-header> 
+      <div>
+        <img mat-card-image src="assets/calculator-hand.jpg" >
+      </div>
+      <mat-card-content>
+  
+      </mat-card-content>
+      <mat-card-actions>
+        <div mat-dialog-actions class="add_button">      
+          <button mat-raised-button color="primary" >Add Service for Estimation</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
+
+  
+ 
+
+
+<!-- <mat-dialog-content> These are the Services you have selected and their respective price estimation</mat-dialog-content>
+<mat-dialog-content> Your Price estimation for Storage is {{storage}}$</mat-dialog-content>
+<mat-dialog-content> Your Price estimation for Virtual Matine is {{vm}}$</mat-dialog-content>
+<mat-dialog-content> Your total Price estimation is {{storage}}$</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button>Close</button>
+</mat-dialog-actions> -->
+
