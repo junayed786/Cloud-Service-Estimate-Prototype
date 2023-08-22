@@ -4,13 +4,13 @@ import { EditStorageEstimateService } from 'src/app/Model/edit-storage-estimate.
 import { RemoveFromCartService } from 'src/app/Model/remove-from-cart.service';
 import { StorageComponent } from 'src/app/cloud_services/storage/storage.component';
 
-
 @Component({
-  selector: 'app-object-storage-template',
-  templateUrl: './object-storage-template.component.html',
-  styleUrls: ['./object-storage-template.component.css']
+  selector: 'app-file-storage-template',
+  templateUrl: './file-storage-template.component.html',
+  styleUrls: ['./file-storage-template.component.css']
 })
-export class ObjectStorageTemplateComponent implements OnInit{
+export class FileStorageTemplateComponent {
+
   constructor(
     public dialog: MatDialog, 
     private RemoveFromCartService:RemoveFromCartService,
@@ -22,7 +22,7 @@ export class ObjectStorageTemplateComponent implements OnInit{
   storage_aws:any=[];
   aa:any=[];
   bb:any=[];
-  ColumnsStorageGoogle: string[] = ['provider','memorysize', 'transfer', 'get', 'put', 'location','duration', 'cost', 'id'];
+  ColumnsStorageGoogle: string[] = ['provider', 'hdd', 'ssd', 'ssd2', 'location','duration', 'cost', 'id'];
   ColumnsStorageAWS: string[] = ['memorysize', 'transfer', 'get', 'put', 'location','duration', 'costaws', 'id'];
   storage_data_google = this.storage_google;
   storage_data_aws= this.storage_aws;
@@ -30,24 +30,23 @@ export class ObjectStorageTemplateComponent implements OnInit{
 
     for (var i = 0; i < sessionStorage.length; i++){
       let rowdata=JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-      if (rowdata["service"]=="objectstorage"){
+      if (rowdata["service"]=="filestorage"){
         rowdata["id"]=String(sessionStorage.key(i));
         this.storage_google.push(rowdata);
       }
     }
-    console.log(this.storage_aws);
-    console.log(this.storage_google);
+
   }
   removeService(id:any){
     this.RemoveFromCartService.removeService(id);
 
   }
   editServiceStorage(id){
-    this.EditStorageEstimateService.EditStorageService(id);
-    this.dialog.open(StorageComponent, {
-      height: '60%',
-      width: '35%',
-    });
+    // this.EditStorageEstimateService.EditStorageService(id);
+    // this.dialog.open(StorageComponent, {
+    //   height: '60%',
+    //   width: '35%',
+    // });
 
   }
 

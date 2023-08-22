@@ -1,5 +1,5 @@
 <div>
-    <h1>Welcome To Storage</h1>
+    <h1>Welcome To Object Storage</h1>
 
     <form action="" [formGroup]="storageForm">
         <div class="div-left">
@@ -59,7 +59,9 @@
                 </mat-form-field>
 
             </div>
-            <section class="example-section" >
+            <br>
+
+            <!-- <section class="example-section" >
                 <span class="example-list-section">
                     <mat-checkbox formControlName="allcheck"
                                 class="example-margin"
@@ -99,10 +101,14 @@
                                 {{task.subtasks[2].name}}
                             </mat-checkbox> 
                         </li>
+
                     </ul>
                 </span>
-            </section>
-
+            </section> -->
+            <h3>Select Cloud Service Providers</h3>
+            <div *ngFor="let asset of assets">
+                <input (change)="onChange(asset)" type="checkbox" value="{{ asset }}" />{{asset}}
+            </div>
             <div class="example-button-row">
                 <button mat-raised-button 
                     color="primary" (click)="saveToCart()">

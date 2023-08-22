@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { VirtualmachineComponent } from './cloud_services/virtualmachine/virtualmachine.component';
 import { CartComponent } from './cart/cart.component';
 import { EstimationCartComponent } from './estimation-cart/estimation-cart.component';
+import { FilestorageComponent } from './cloud_services/filestorage/filestorage.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'virtualmachines', component: VirtualmachineComponent},
   {path: 'cart', component: CartComponent},
   {path: 'estimationcart', component: EstimationCartComponent},
+  {path: 'filestorage', component: FilestorageComponent}
 
 ];
 

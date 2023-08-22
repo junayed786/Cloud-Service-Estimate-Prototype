@@ -16,11 +16,13 @@ import {MatCardModule} from '@angular/material/card';
 
 import { VirtualmachineComponent } from './virtualmachine/virtualmachine.component';
 import { StorageComponent } from './storage/storage.component';
+import { FilestorageComponent } from './filestorage/filestorage.component';
 
 @NgModule({
   declarations: [
     VirtualmachineComponent,
-    StorageComponent
+    StorageComponent,
+    FilestorageComponent
   ],
   imports: [
     CommonModule,

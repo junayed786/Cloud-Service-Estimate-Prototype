@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { VirtualMachineTemplateComponent } from './virtual-machine-template/virtual-machine-template.component';
 import { ObjectStorageTemplateComponent } from './object-storage-template/object-storage-template.component';
+import { SummaryComponent } from './summary/summary.component';
+import { FileStorageTemplateComponent } from './file-storage-template/file-storage-template.component';
+
 
 @Component({
   selector: 'app-estimation-cart',
@@ -18,6 +21,8 @@ export class EstimationCartComponent implements OnInit{
   ngOnInit(): void {
     this.container.createComponent(ObjectStorageTemplateComponent)
     this.container.createComponent(VirtualMachineTemplateComponent)
+    this.container.createComponent(FileStorageTemplateComponent)
+    this.container.createComponent(SummaryComponent)
   }
 
 }

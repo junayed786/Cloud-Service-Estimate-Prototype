@@ -3,15 +3,10 @@ import {ThemePalette, } from '@angular/material/core';
 import { CartService } from '../../shared/cart.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { VirtualMachineService } from 'src/app/Model/virtual-machine.service';
+import { EstimateService } from 'src/app/Model/estimate.service';
 
 
 
-interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
 interface Location {
   value: string;
   viewValue: string;
@@ -49,7 +44,7 @@ export class VirtualmachineComponent implements OnInit {
     location: new FormControl('')
 
   });
-  constructor(private fb: FormBuilder, private shared:VirtualMachineService){
+  constructor(private fb: FormBuilder, private shared:VirtualMachineService, private EstimateService:EstimateService){
 
   }
 
@@ -61,16 +56,12 @@ export class VirtualmachineComponent implements OnInit {
   upinstance:number;
   upnoh:number;
   cost:number;
-
   vmdata:{};
 
-  saveToCart(){
-    this.shared.VMFormValue(this.vmForm.value, this.range.value);
-    this.shared.calculateVM();
 
-  }
+  assets: any;
   ngOnInit(){
-
+    this.assets=this.EstimateService.availableProviders()
     if ("tempvm" in sessionStorage){    
       let obj=JSON.parse(sessionStorage.getItem("tempvm"));
       this.upram=obj["ram"];
@@ -84,35 +75,18 @@ export class VirtualmachineComponent implements OnInit {
     } 
     
   }
-  task: Task = {
-    name: 'All Service Providers',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      {name: 'AWS', completed: false, color: 'primary'},
-      {name: 'Google', completed: false, color: 'primary'},
-      {name: 'New', completed: false, color: 'primary'},
-    ],
-  };
 
-  allComplete: boolean = false;
-
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
-
-  someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
+  all_selected_values: string[] = [];
+  onChange(value: string): void {
+    if (this.all_selected_values.includes(value)) {
+      this.all_selected_values = this.all_selected_values.filter((item) => item !== value);
+    } else {
+      this.all_selected_values.push(value);
     }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    console.log(this.all_selected_values);
   }
+  saveToCart(){
+    this.shared.VMFormValue(this.vmForm.value, this.range.value, this.all_selected_values);
 
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.task.subtasks == null) {
-      return;
-    }
-    this.task.subtasks.forEach(t => (t.completed = completed));
   }
 }

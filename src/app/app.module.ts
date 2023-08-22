@@ -32,6 +32,9 @@ import { CartComponent } from './cart/cart.component';
 import { EstimationCartComponent } from './estimation-cart/estimation-cart.component';
 import { ObjectStorageTemplateComponent } from './estimation-cart/object-storage-template/object-storage-template.component';
 import { VirtualMachineTemplateComponent } from './estimation-cart/virtual-machine-template/virtual-machine-template.component';
+import { SummaryComponent } from './estimation-cart/summary/summary.component';
+import { FilestorageComponent } from './cloud_services/filestorage/filestorage.component';
+import { FileStorageTemplateComponent } from './estimation-cart/file-storage-template/file-storage-template.component';
 
 
 @NgModule({
@@ -46,6 +49,10 @@ import { VirtualMachineTemplateComponent } from './estimation-cart/virtual-machi
     EstimationCartComponent,
     ObjectStorageTemplateComponent,
     VirtualMachineTemplateComponent,
+    SummaryComponent,
+    FilestorageComponent,
+    FileStorageTemplateComponent,
+
 
 
   ],

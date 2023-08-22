@@ -21,7 +21,7 @@ export class VirtualMachineTemplateComponent implements OnInit{
   totalcost:number;
   vm_google:any=[];
   vm_aws:any=[];
-  ColumnsVMGoogle: string[] = ['ram', 'storage', 'cpucore', 'os','noh','instance','location','duration',  'costgoogle', 'id'];
+  ColumnsVMGoogle: string[] = ['provider','ram', 'storage', 'cpucore', 'os','noh','instance','location','duration',  'costgoogle', 'id'];
   ColumnsVMAWS: string[] = ['ram', 'storage', 'cpucore', 'os','noh','instance','location','duration', 'costaws', 'id'];
 
   vm_data_google= this.vm_google;
@@ -29,20 +29,9 @@ export class VirtualMachineTemplateComponent implements OnInit{
   ngOnInit(): void {
     for (var i = 0; i < sessionStorage.length; i++){
       let rowdata=JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-      console.log(rowdata);
-      if ('costaws' in rowdata){
-        if ('cpucore' in rowdata){
-          rowdata["id"]=String(sessionStorage.key(i));
-          this.vm_aws.push(rowdata);
-        }
-
-      }
-      if ('costgoogle' in rowdata){
-        if ('cpucore' in rowdata){
-          rowdata["id"]=String(sessionStorage.key(i));
-          this.vm_google.push(rowdata);
-        }
-
+      if (rowdata["service"]=="virtualmachine"){
+        rowdata["id"]=String(sessionStorage.key(i));
+        this.vm_google.push(rowdata);
       }
     }
   }

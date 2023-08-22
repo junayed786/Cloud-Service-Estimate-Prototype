@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 import { EstimateService } from './estimate.service';
-
-
+EstimateService
 @Injectable({
   providedIn: 'root'
 })
-export class VirtualMachineService {
-  VMParam:any;
+export class FileStorageService {
+  storageParam:any;
   range:any;
-  cost:any;
   providers:any;
+
   constructor(private EstimateService:EstimateService) { }
-  
-  VMFormValue(data:any,date: any,providers:any){
-    this.VMParam=data 
+  StorageFormValue(data:any,date: any, providers:any){
+    this.storageParam=data 
     this.range=date 
     this.providers=providers
-    this.addForEstimate()
-    
+  this.addForEstimate()
+
   }
-  
+
   addForEstimate(){
 
     const date1=this.range['start'];
@@ -27,24 +25,26 @@ export class VirtualMachineService {
     const diffTime = Math.abs(+date2-+date1)
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
     const duration=diffDays+ " days"
-    this.VMParam["duration"] = duration
-    if ("tempstorage" in sessionStorage){
+    this.storageParam["duration"] = duration
+    if ("tempfile" in sessionStorage){
       let obj=JSON.parse(sessionStorage.getItem("tempstorage"));
-      sessionStorage.setItem(obj['id'], JSON.stringify(this.VMParam));
+      sessionStorage.setItem(obj['id'], JSON.stringify(this.storageParam));
       sessionStorage.removeItem("tempstorage")
       window.location.reload();
     }
     else {
       for (var val of this.providers) {
         const serviceID = val+ new Date();
-        this.VMParam["provider"]=val
-        this.VMParam["service"]="virtualmachine"
-        this.VMParam["cost"] = this.EstimateService.estimate(this.VMParam)
-        sessionStorage.setItem(serviceID, JSON.stringify(this.VMParam)); 
+        this.storageParam["provider"]=val
+        this.storageParam["service"]="filestorage"
+        this.storageParam["cost"] = this.EstimateService.estimate(this.storageParam)
+        sessionStorage.setItem(serviceID, JSON.stringify(this.storageParam)); 
       }
       window.location.reload();
     }
 
   }
-
+  providerList(){
+    return this.providers
+  }
 }

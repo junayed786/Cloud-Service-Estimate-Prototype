@@ -2,10 +2,13 @@
 <br>
 <!-- for storage service -->
 <ng-container *ngIf="(storage_data_google.length !=0) || (storage_data_aws.length !=0)">
-  <h1 for=" ">Your Estimation for Storage as a service</h1>
+  <h1 for=" ">Your Estimation for Object Storage as a service</h1>
   <ng-container *ngIf="(storage_data_google.length !=0)">
-    <h3 for=" ">Cost Estimation For Google Cloud Provider</h3>
-    <table mat-table [dataSource]="storage_data_google" class="mat-elevation-z8">    
+    <table mat-table [dataSource]="storage_data_google" class="mat-elevation-z8">  
+        <ng-container matColumnDef="provider">
+          <th mat-header-cell *matHeaderCellDef> Cloud Service Provider </th>
+          <td mat-cell *matCellDef="let element"> {{element.provider}} </td>
+        </ng-container>    
         <ng-container matColumnDef="memorysize">
           <th mat-header-cell *matHeaderCellDef> Memory Size </th>
           <td mat-cell *matCellDef="let element"> {{element.memorysize}} </td>
@@ -30,9 +33,9 @@
             <th mat-header-cell *matHeaderCellDef> Duration </th>
             <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
         </ng-container>   
-        <ng-container matColumnDef="costgoogle">
-          <th mat-header-cell *matHeaderCellDef> Cost </th>
-          <td mat-cell *matCellDef="let element"> {{element.costgoogle}} </td>
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef> Cost Euro</th>
+          <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
         </ng-container>   
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> Action </th>
@@ -40,14 +43,13 @@
             <button (click)="removeService(element.id)"> Remove</button>
             <button (click)="editServiceStorage(element.id)"> Edit</button>
           </td>
-        </ng-container>
-      
+        </ng-container>      
         <tr mat-header-row *matHeaderRowDef="ColumnsStorageGoogle"></tr>
         <tr mat-row *matRowDef="let row; columns: ColumnsStorageGoogle;"></tr>
       </table>
   </ng-container>
 
-  <ng-container *ngIf="(storage_data_aws.length !=0)">
+  <!-- <ng-container *ngIf="(storage_data_aws.length !=0)">
     <h3 for=" ">Cost Estimation For AWS Cloud Provider</h3>
     <table mat-table [dataSource]="storage_data_aws" class="mat-elevation-z8">    
         <ng-container matColumnDef="memorysize">
@@ -89,5 +91,5 @@
         <tr mat-header-row *matHeaderRowDef="ColumnsStorageAWS"></tr>
         <tr mat-row *matRowDef="let row; columns: ColumnsStorageAWS;"></tr>
       </table>
-  </ng-container>
+  </ng-container> -->
 </ng-container>

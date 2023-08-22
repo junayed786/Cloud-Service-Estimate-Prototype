@@ -42,7 +42,6 @@ export class CartComponent implements OnInit{
   ngOnInit(): void {
     for (var i = 0; i < sessionStorage.length; i++){
       let rowdata=JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-      console.log(rowdata);
       if ('costaws' in rowdata){
         if ('cpucore' in rowdata){
           rowdata["id"]=String(sessionStorage.key(i));
@@ -69,6 +68,8 @@ export class CartComponent implements OnInit{
       // this.totalcost=grandtotal
 
     }
+    console.log(this.storage_aws);
+    console.log(this.storage_google);
   }
   removeService(id:any){
     this.RemoveFromCartService.removeService(id);
@@ -78,7 +79,7 @@ export class CartComponent implements OnInit{
     this.EditStorageEstimateService.EditStorageService(id);
     this.dialog.open(StorageComponent, {
       height: '60%',
-      width: '35%',
+      width: '65%',
     });
 
   }
