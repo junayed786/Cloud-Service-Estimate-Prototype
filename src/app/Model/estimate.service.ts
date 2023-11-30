@@ -9,7 +9,7 @@ export class EstimateService {
   constructor() { }
 
   availableProviders(){
-    return ['All Service Providers','AWS','Google','Azure','IBM','Telekom']
+    return ['AWS','Google']
   }
 
   estimate(OS_data:any){

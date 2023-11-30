@@ -28,6 +28,9 @@ export class StorageService{
     this.storageParam["duration"] = duration
     if ("tempstorage" in sessionStorage){
       let obj=JSON.parse(sessionStorage.getItem("tempstorage"));
+      this.storageParam["provider"]=this.providers[0]
+      this.storageParam["service"]="objectstorage"
+      this.storageParam["cost"] = this.EstimateService.estimate(this.storageParam)
       sessionStorage.setItem(obj['id'], JSON.stringify(this.storageParam));
       sessionStorage.removeItem("tempstorage")
       window.location.reload();
