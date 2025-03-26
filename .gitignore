@@ -1,0 +1,17 @@
+# Angular cache
+.angular/cache/
+.angular/
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
