@@ -1,0 +1,14 @@
+ul {
+    list-style-type: none;
+    margin-top: 4px;
+  }
+.div-left{
+  left:40px;
+  float:left;
+  width:100px;
+}
+.div-right{
+  position: relative;
+  left:150px;
+
+}

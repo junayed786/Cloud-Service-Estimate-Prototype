@@ -1,0 +1,15 @@
+mat-grid-tile {
+    background: rgb(233, 226, 226);
+
+  }
+mat-grid-list{
+    position: sticky;
+    align-items: center;
+    width: 85%;
+    margin-left: 8%;
+    margin-top: 10%;
+}
+
+header-provider{
+    margin-top: 10%;
+}

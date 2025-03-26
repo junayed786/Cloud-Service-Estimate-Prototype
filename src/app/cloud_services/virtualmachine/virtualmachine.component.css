@@ -1,0 +1,20 @@
+
+  
+  ul {
+    list-style-type: none;
+    margin-top: 4px;
+    margin-left:4%;
+  }
+.div-main{
+  left:10px;
+}
+  .div-left{
+    float:left;
+    width:8%;
+  }
+  .div-right{
+    position: relative;
+    left:10%
+  
+  
+  }

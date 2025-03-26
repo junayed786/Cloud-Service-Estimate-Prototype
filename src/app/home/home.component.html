@@ -1,0 +1,36 @@
+<h1>Please select the cloud services you are looking for</h1>
+
+
+
+<div class="home-div-class"  >
+    <div >
+        <mat-grid-list cols="2" rowHeight="2:1" [gutterSize]="'15px'" bottom="'10px'" height=70%>
+            <mat-grid-tile (click)="openVirtialMachineDialog()">
+                <figure>
+                    <h1 text-align="center"> Virtual Machines </h1>
+                    <img width=90% height=0% src="/assets/vm.png" />
+                </figure>
+            </mat-grid-tile>
+            <mat-grid-tile (click)="openStorageDialog()">
+                <figure>
+                    <h1 text-align="center"> Object Storage </h1>
+                    <img width=50% height=60% src="/assets/storage.png" />  
+                </figure>
+            </mat-grid-tile>
+    
+            <mat-grid-tile>
+                <figure>
+                    <h1 text-align="center"> New Cloud Service </h1>
+                    <img width=50% height=60% src="/assets/servers.png" />
+                </figure>
+            </mat-grid-tile>
+     
+            <mat-grid-tile>   
+            <figure>
+                <h1 text-align="center"> New Cloud Service</h1>
+                <img width=50% height=70% src="/assets/database.png" />    
+            </figure>     
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+</div>

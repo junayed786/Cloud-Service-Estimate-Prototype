@@ -1,0 +1,14 @@
+mat-grid-tile {
+    background: lightblue;
+
+  }
+mat-grid-list{
+    position: sticky;
+    align-items: center;
+    width: 85%;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+home-div-class{
+    margin-left: 10%;
+}
