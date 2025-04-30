@@ -1,28 +1,63 @@
-# AngularMt
+# 🅰️ AngularMt
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+AngularMt is a web application built with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
 
-## Development server
+## 🚀 Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Start Development Server
 
-## Code scaffolding
+```bash
+ng serve
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Open your browser and navigate to `http://localhost:4200/`. The application will automatically reload when you modify any source files.
 
-## Build
+### 🛠️ Code Scaffolding
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To generate a new Angular artifact (component, directive, etc.):
 
-## Running unit tests
+```bash
+ng generate component component-name
+# or
+ng generate directive|pipe|service|class|guard|interface|enum|module
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🏗️ Build
 
-## Running end-to-end tests
+To compile the project for production:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+ng build
+```
 
-## Further help
+The build artifacts will be stored in the `dist/` directory.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## ✅ Running Tests
 
+### Unit Tests
+
+Run unit tests using [Karma](https://karma-runner.github.io):
+
+```bash
+ng test
+```
+
+### End-to-End Tests
+
+To run end-to-end tests (after installing the necessary package):
+
+```bash
+ng e2e
+```
+
+> You may need to install a suitable e2e testing package first.
+
+## 📚 Additional Resources
+
+For more help with Angular CLI commands:
+
+```bash
+ng help
+```
+
+Or visit the [Angular CLI Documentation](https://angular.io/cli) for more details.
